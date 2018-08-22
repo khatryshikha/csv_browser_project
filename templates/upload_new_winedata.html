@@ -1,4 +1,8 @@
 {% extends "index.html" %} {% block content %}
 <p>Upload File</p>
-<input type="file" name="File_Name" size="chars"> 
+<form action="upload" method="post" id="form1" enctype="multipart/form-data">
+{% csrf_token %}
+    <input type="file" name="datafile" id="id_datafile">
+</form>
+<button type="submit" form="form1" value="Submit">Submit</button>
 {% endblock %}
