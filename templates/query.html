@@ -1,0 +1,20 @@
+{% extends "index.html" %} {% block content %}
+<p>This file contains {{ count }} items.</p>
+<form action="result" method='post'>{% csrf_token %}
+    <select name="query">
+        <option value="all">ALL</option>
+        <option value="winery">Winery</option>
+        <option value="country">Country</option>
+        <option value="province">Province</option>
+        <option value="region1">Region1</option>
+        <option value="region2">Region2</option>
+        <option value="variety">Variety</option>
+        <option value="winery">Winery</option>
+    </select>
+    <input type="text" placeholder="Type for Search" name="Search" id="Search">
+    <br><br>
+    <input type="submit" value="Search">
+</form>
+<br>
+<a href="{% url 'clear' %}">Clear previous CSV file</a>
+{% endblock %}

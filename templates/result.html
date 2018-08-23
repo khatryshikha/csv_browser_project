@@ -1,0 +1,21 @@
+{% extends "index.html" %} {% block content %}
+<h2>Search Results</h2>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>WINERY</th>
+            <th>VARIETY</th>
+            <th>PRICE</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="/wine/details/{{items.id}}">{{ items.winery }}</a></td><br>
+            <td>{{ items.variety }}</td><br>
+            <td>Rs.{{ items.price }}</td>
+        </tr>
+    </tbody>
+</table>
+<a href="{% url 'upload' %}"><button type="button" class="btn btn-dark">Back</button></a>
+
+{% endblock %}

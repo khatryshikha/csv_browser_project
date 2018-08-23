@@ -16,5 +16,5 @@ Including another URLconf
 from django.conf.urls import url ,include
 
 urlpatterns = [
-    url(r'^', include("wines.urls")),  
+    url(r'^wine/', include("wines.urls")),  
 ]
