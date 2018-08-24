@@ -41,6 +41,7 @@ def filter_item(request):
     if request.method == 'POST' :
         search_field = request.POST.get('query')
         search_data = request.POST.get('Search')
+        search_data = search_data.title()
         dbs =db.test
         if search_field == 'all' or search_data == '' :
             item = dbs.find_one({})                                     # find all items in db and put hen in a dict item ( problem )
