@@ -47,12 +47,20 @@ def filter_item(request):
             search_data = search_data.upper()
         dbs =db.test
         if search_field == 'all' or search_data == '' :
-            item = dbs.find_one({})                                     # find all items in db and put hen in a dict item ( problem )
+            item = list(dbs.find({}))                                     # find all items in db and put hen in a dict item ( problem )
         else:
-            item = dbs.find_one({ search_field : search_data })            # search for paricular items in db (problem)
-        return render(request, 'result.html', {'items':item })
+            item = list(dbs.find({ search_field : search_data }))            # search for paricular items in db (problem)
+        if item == []:
+            return render(request,'result_error.html')
+        else:
+            context = {
+                'items':item,
+                'field':search_field,
+                'data' : search_data
+            }
+            return render(request, 'result.html',context)
     else :
-        return render(request, 'result.html', {'items':item})
+        return render(request, 'result.html', {'items': item })
 
 def clear_database(request):
     db.test.remove({})
