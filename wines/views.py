@@ -67,7 +67,8 @@ def clear_database(request):
     return render(request,'upload_new_winedata.html')
 
 def details(request,id):
-    detail = db.test.find_one({ 'id' : id })
+    detail = db.test.find_one({ 'id' : id })        # column name can be anything
+    print detail
     return render(request,'details.html',{'detail': detail})
 
 def return_items(items):

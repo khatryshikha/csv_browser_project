@@ -1,6 +1,6 @@
 {% extends "index.html" %} {% block content %}
 <h2>Search Results</h2>
-{% if field %}
+{% if field and data %}
 <p>List of Wineries on the bases of {{ field }} : {{ data }}</p>
 {% endif %}
 <table class="table">
@@ -15,7 +15,7 @@
         <tr>
             <td><a href="/wine/details/{{i.id}}">{{ i.winery }}</a></td><br>
             <td>{{ i.variety }}</td><br>
-            <td>Rs.{{ i.price }}</td>
+            <td>$ {{ i.price }}</td>
         </tr>
     </tbody>
     {% endfor %}
