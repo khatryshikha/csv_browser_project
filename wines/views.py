@@ -7,6 +7,9 @@ import csv
 import time
 # Create your views here.
 
+def home(request):
+    return render(request,'home_page.html')
+
 def check_new_entry(request):
     if request.method == 'GET':
         count = db.test.count({})
@@ -45,11 +48,7 @@ def filter_item(request):
             search_data = search_data.title()
         else:
             search_data = search_data.upper()
-        dbs =db.test
-        if search_field == 'all' or search_data == '' :
-            item = list(dbs.find({}))                                     # find all items in db and put hen in a dict item ( problem )
-        else:
-            item = list(dbs.find({ search_field : search_data }))            # search for paricular items in db (problem)
+        item = add_particular_content(search_field , search_data)        
         if item == []:
             return render(request,'result_error.html')
         else:
@@ -68,11 +67,15 @@ def clear_database(request):
 
 def details(request,id):
     detail = db.test.find_one({ 'id' : id })        # column name can be anything
-    print detail
     return render(request,'details.html',{'detail': detail})
 
-def return_items(items):
-    return items
+def add_particular_content(search_field,search_data):
+    dbs =db.test
+    if search_field == 'all' or search_data == '' :
+        item = list(dbs.find({}))                                    
+    else:
+        item = list(dbs.find({ search_field : search_data }))
+    return item
 
 
 
