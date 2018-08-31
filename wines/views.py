@@ -48,7 +48,7 @@ def filter_item(request):
             search_data = search_data.title()
         else:
             search_data = search_data.upper()
-        item = add_particular_content(search_field , search_data)        
+        item = add_particular_content(search_field , search_data)
         if item == []:
             return render(request,'result_error.html')
         else:
@@ -66,7 +66,7 @@ def clear_database(request):
     return render(request,'upload_new_winedata.html')
 
 def details(request,id):
-    detail = db.test.find_one({ 'id' : id })        # column name can be anything
+    detail = db.test.find_one({ 'id' : id })        
     return render(request,'details.html',{'detail': detail})
 
 def add_particular_content(search_field,search_data):
@@ -76,6 +76,9 @@ def add_particular_content(search_field,search_data):
     else:
         item = list(dbs.find({ search_field : search_data }))
     return item
+
+
+
 
 
 

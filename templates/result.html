@@ -1,8 +1,6 @@
 {% extends "index.html" %} {% block content %}
 <h2>Search Results</h2>
-{% if field and data %}
-List of Wineries on the bases of {{ field }} : {{ data }}
-{% endif %}
+{% if field and data %} List of Wineries on the bases of {{ field }} : {{ data }} {% endif %}
 <table class="table">
     <thead>
         <tr>
@@ -11,16 +9,17 @@ List of Wineries on the bases of {{ field }} : {{ data }}
             <th>PRICE</th>
         </tr>
     </thead>
-    {% for i in items %}
     <tbody>
-        <tr>
-            <td><a href="/wine/details/{{i.id}}">{{ i.winery }}</a></td><br>
-            <td>{{ i.variety }}</td><br>
-            <td>$ {{ i.price }}</td>
-        </tr>
+        {% for i in items %}
+            <tr>
+                <td><a href="/wine/details/{{i.id}}">{{ i.winery }}</a></td>
+                <td>{{ i.variety }}</td>
+                <td>$ {{ i.price }}</td>
+            </tr>
+        {% endfor %}
     </tbody>
-    {% endfor %}
 </table>
 <a href="{% url 'upload' %}"><button type="button" class="btn btn-dark">Back</button></a>
-
+<br>
+<br>
 {% endblock %}
