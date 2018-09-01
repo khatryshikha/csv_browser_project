@@ -25,7 +25,7 @@ SECRET_KEY = '&lrqlv-wr=i_eg_v)&y-uvx=syr#awe&bh$)b@8=u8!#lu95&_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -97,5 +97,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MONGO_URI = 'localhost'
-MONGO_PORT = 27017
+# MONGO_URI = 'localhost'
+# MONGO_PORT = 27017
+# MONGO_URI = 'mongodb://localhost:27017/'
+# MONGO_URI = 'mongodb://siddharth22:siddharth22@ds056549.mlab.com:56549/csvproject'
+
+MONGO_URI = "mongodb://siddharth22:siddharth22@ds141872.mlab.com:41872/shikha"

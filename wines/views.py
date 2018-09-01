@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-from database import db
 import csv
 import time
+
+from django.shortcuts import render
+
+from .database import db
+
 # Create your views here.
 
 def home(request):
@@ -59,14 +62,14 @@ def filter_item(request):
             }
             return render(request, 'result.html',context)
     else :
-        return render(request, 'result.html', {'items': item })
+        return render(request, 'result.html', {'items': item})
 
 def clear_database(request):
     db.test.remove({})
     return render(request,'upload_new_winedata.html')
 
 def details(request,id):
-    detail = db.test.find_one({ 'id' : id })        
+    detail = db.test.find_one({ 'id' : id })        # column name can be anything
     return render(request,'details.html',{'detail': detail})
 
 def add_particular_content(search_field,search_data):
@@ -76,9 +79,3 @@ def add_particular_content(search_field,search_data):
     else:
         item = list(dbs.find({ search_field : search_data }))
     return item
-
-
-
-
-
-
