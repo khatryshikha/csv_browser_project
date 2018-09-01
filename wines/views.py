@@ -51,7 +51,11 @@ def filter_item(request):
             search_data = search_data.title()
         else:
             search_data = search_data.upper()
-        item = add_particular_content(search_field , search_data)
+        dbs =db.test
+        if search_field == 'all' or search_data == '' :
+            item = list(dbs.find({}))                                    
+        else:
+            item = list(dbs.find({ search_field : search_data }))
         if item == []:
             return render(request,'result_error.html')
         else:
@@ -72,10 +76,3 @@ def details(request,id):
     detail = db.test.find_one({ 'id' : id })        # column name can be anything
     return render(request,'details.html',{'detail': detail})
 
-def add_particular_content(search_field,search_data):
-    dbs =db.test
-    if search_field == 'all' or search_data == '' :
-        item = list(dbs.find({}))                                    
-    else:
-        item = list(dbs.find({ search_field : search_data }))
-    return item

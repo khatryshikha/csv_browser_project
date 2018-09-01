@@ -100,6 +100,6 @@ STATIC_URL = '/static/'
 # MONGO_URI = 'localhost'
 # MONGO_PORT = 27017
 MONGO_URI = 'mongodb://localhost:27017/'
-MONGO_URI = 'mongodb://siddharth22:siddharth22@ds056549.mlab.com:56549/csvproject'
+# MONGO_URI = 'mongodb://siddharth22:siddharth22@ds056549.mlab.com:56549/csvproject'
 
 # MONGO_URI = "mongodb://siddharth22:siddharth22@ds141872.mlab.com:41872/shikha"
