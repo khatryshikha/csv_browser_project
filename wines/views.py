@@ -6,7 +6,7 @@ import time
 
 from django.shortcuts import render
 
-from .database import db
+from .database import dbs as db
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ def home(request):
 
 def check_new_entry(request):
     if request.method == 'GET':
-        count = db.test.count({})
+        count = db.test.find({}).count()
         if (count == 0):
             return render(request, 'upload_new_winedata.html')
         else:

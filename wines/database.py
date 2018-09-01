@@ -4,5 +4,7 @@ from pymongo import MongoClient
 
 # client = MongoClient(settings.MONGO_URI, settings.MONGO_PORT)
 # client = MongoClient('mongodb://localhost:27017/')
+print ("adasdasdsad")
+print (settings.MONGO_URI)
 client = MongoClient(settings.MONGO_URI)
-db = client.schlumberger
+dbs = client.csvproject
