@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+import os
 import csv
 import time
-
+from tqdm import tqdm
 from django.shortcuts import render
-
+from django.conf import settings
 from .database import dbs as db
 
 # Create your views here.
@@ -25,11 +25,15 @@ def check_new_entry(request):
             return render(request, 'query.html',context)
     elif request.method == 'POST':
         files = request.FILES['datafile']
-        spamreader = csv.reader(files, delimiter=str(','))
+        with open(str(files),'rb') as fl:
+            spamreader = csv.reader(files, delimiter=str(','))
+            row_count = sum(1 for row in fl )
         count = 0
         data = []
         head_list = []
-        for row in spamreader:
+        iterator = tqdm(spamreader,total=row_count)
+        for row in iterator:
+            time.sleep(0.1)
             if ( count == 0 ):
                 head_list = row
                 count = count + 1
